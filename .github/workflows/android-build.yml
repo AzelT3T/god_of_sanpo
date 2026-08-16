@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         distribution: temurin
         java-version: '17'
@@ -26,6 +26,8 @@ jobs:
         api-level: 33
         target: default
         arch: x86_64
+        # this action requires a `script` input; run a lightweight gradle check
+        script: ./gradlew -v
 
     - name: Cache Gradle
       uses: actions/cache@v3
